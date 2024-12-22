@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Help Page - Explore Taylor Swift's Folklore theme for guidance on the 4Swifties website.">
+    <meta name="author" content="4Swifties">
+    <title>Help | 4Swifties</title>
+    <!-- Custom Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        body, h1, p, nav, footer, a {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Typography and Body Setup */
+        body {
+            font-family: 'Merriweather', serif; /* Custom font for the Folklore theme */
+            background: url('yxnrpl4t5uc51.webp') no-repeat center center fixed;
+            background-size: cover;
+            color: #f1f1f1;
+            line-height: 1.6;
+            padding-top: 50px;
+            font-size: 16px;
+            opacity: 0; /* Initialize with no visibility */
+            animation: fadeIn 2s forwards; /* Fade in content when loaded */
+        }
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        /* Navigation Bar */
+        nav {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            background-color: rgba(50, 50, 50, 0.8);
+            padding: 15px 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            background-color: #444;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        nav a:hover {
+            background-color: #666;
+            transform: translateY(-5px);
+        }
+        /* Main Content Area */
+        main {
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 800px;
+            opacity: 1;
+            margin-bottom: 100px; /* Adjusted margin to extend the page before footer */
+        }
+        /* Fade-In and Fade-Out Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        /* Bullet Points */
+        ul {
+            text-align: left;
+            margin: 20px auto;
+            padding-left: 30px;
+            font-size: 1.1rem;
+            color: white; /* Change text color to white */
+            list-style-type: none; /* Remove default bullets */
+        }
+        ul li {
+            margin: 10px 0;
+            position: relative; /* Position for custom bullet */
+        }
+        ul li:before {
+            content: "•"; /* Custom bullet */
+            color: white; /* Bullet color */
+            font-size: 1.5em; /* Bullet size */
+            position: absolute; /* Positioning */
+            left: -20px; /* Distance from text */
+            top: -10px; /* Alignment with text */
+        }
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #1a1a1a;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 1.2rem;
+        }
+        footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                font-size: 2rem;
+            }
+            nav a {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+            main {
+                padding: 20px;
+                max-width: 100%;
+            }
+            footer {
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
+        @media (max-width: 480px) {
+            header {
+                font-size: 1.5rem;
+            }
+            footer {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        Help & Support
+    </header>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="4swifties0897.html" onclick="fadeAndNavigate(event, this.href)">Home</a>
+        <a href="Discovery.html" onclick="fadeAndNavigate(event, this.href)">Discovery</a>
+    </nav>
+    <!-- Main Content Area -->
+    <main>
+        <h2>Need Help?</h2>
+        <p>We are here to assist you. Please check the following tips for a better experience:</p>
+        <!-- Bullet Points -->
+        <ul>
+            <li>Try using the Brave browser for a better experience.</li>
+            <li>Keep reloading the page if a video doesn't load.</li>
+            <li>Check your internet connection if the video doesn't play once you click "Play".</li>
+            <li>Feel free to contact us if you need further assistance!</li>
+            <li>Contact Us at <strong>4swifties1989@gmail.com</strong></li>
+        </ul>
+    </main>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 4Swifties. All Rights Reserved.</p>
+    </footer>
+    <script>
+        function fadeAndNavigate(event, url) {
+            event.preventDefault(); // Prevent the default anchor behavior
+            document.body.style.animation = 'fadeOut 1s forwards'; // Shortened to 1s for a faster transition
+            setTimeout(() => {
+                window.location.href = url;
+            }, 1000); // Delay navigation to match the new animation duration
+        }
+    </script>
+</body>
+</html>

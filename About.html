@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About 4Swifties - Discover Taylor Swift's music journey and exclusive content.">
+    <meta name="author" content="4Swifties">
+    <title>About | 4Swifties</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Sacramento&display=swap" rel="stylesheet">
+    <style>
+        /* General Reset */
+        body {
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            background-image: url('taylor_swift_evermore_4k_wallpaper_by_speedcowboy_dgdpj4j-pre.jpg'); /* Correct image path */
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+            opacity: 0; /* Start with no visibility */
+            animation: fadeIn 1s forwards; /* Fade in the content when loaded */
+        }
+
+        /* Fade-in and Fade-out animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        /* Content Styling */
+        .about-container {
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark background */
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-container h1 {
+            font-family: 'Sacramento', cursive;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: #f5b7b1; /* Soft, romantic pink */
+        }
+
+        .about-container p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #ddd; /* Light gray for readability */
+        }
+
+        .about-container a {
+            text-decoration: none;
+            color: #f5b7b1;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .about-container a:hover {
+            color: #f0e68c; /* Soft yellow hover effect */
+        }
+
+        /* Button Styling */
+        .main-button {
+            background: #6c6c6c; /* Grey background to match Discovery page */
+            color: #fff;
+            font-size: 1.3rem;
+            padding: 14px 30px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .main-button:hover {
+            background: #4a4a4a; /* Darker grey on hover */
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 600px) {
+            .about-container h1 {
+                font-size: 2.5rem;
+            }
+            .about-container p {
+                font-size: 1rem;
+            }
+            .main-button {
+                padding: 12px 28px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="about-container">
+        <h1>Welcome to 4Swifties</h1>
+        <p>Here, we celebrate the world of Taylor Swift. From her earliest albums to her latest masterpieces, we’re dedicated to bringing you everything Taylor, all in one place. Join us as we explore the stories and magic behind the music!</p>
+        <a href="#" class="main-button" onclick="navigateBack()">Back to Discovery</a>
+    </div>
+
+    <script>
+        function navigateBack() {
+            document.body.style.animation = 'fadeOut 1s forwards';
+            setTimeout(() => {
+                window.location.href = 'Discovery.html';
+            }, 1000); // Wait for the fade-out animation to complete
+        }
+    </script>
+</body>
+</html>
