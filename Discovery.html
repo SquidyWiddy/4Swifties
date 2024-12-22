@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore Taylor Swift's journey through music and videos. Stay updated on new content, concerts, and much more!">
+    <meta name="author" content="4Swifties">
+    <meta property="og:title" content="4Swifties - Discover Taylor Swift">
+    <meta property="og:description" content="Explore Taylor Swift's music journey with videos and exclusive content.">
+    <meta name="robots" content="index, follow">
+    <title>Discovery Page | 4Swifties</title>
+
+    <!-- Custom Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset */
+        body, h1, nav, main, footer, a, table, th, td, .card {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Typography and Body Setup */
+        body {
+            font-family: 'Poppins', sans-serif; /* Custom font */
+            background: url('27bfb3959c63fbbce308ffd0300177dc.jpg') no-repeat center center fixed;
+            background-size: cover; /* Cover the entire viewport */
+            color: #ffffff;
+            line-height: 1.6;
+            padding-top: 50px;
+            font-size: 16px;
+        }
+
+        /* Loading Animation */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            font-size: 2rem;
+        }
+
+        /* Header */
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+            padding: 15px 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            padding: 15px 20px;
+            text-decoration: none;
+            background-color: #444;
+            transition: background-color 0.3s, transform 0.3s;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            background-color: #666;
+            transform: translateY(-5px);
+        }
+
+        /* Main Content Area */
+        main {
+            padding: 30px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        /* Animation for fading in */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Card Styles for Navigation */
+        .card {
+            background-color: #555;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.8rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background-color: #1a1a1a;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 1.2rem;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Button Container */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                font-size: 2rem;
+            }
+
+            nav a {
+                padding: 12px 15px;
+                font-size: 1rem;
+            }
+
+            main {
+                padding: 20px;
+                max-width: 100%;
+            }
+
+            .card {
+                padding: 15px;
+                width: 90%;
+            }
+
+            .card i {
+                font-size: 2rem;
+            }
+
+            .card h3 {
+                font-size: 1.6rem;
+            }
+
+            footer {
+                font-size: 1rem;
+                padding: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                font-size: 1.5rem;
+            }
+
+            .card h3 {
+                font-size: 1.4rem;
+            }
+
+            footer {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Animation -->
+    <div id="loading">Loading...</div>
+
+    <!-- Header -->
+    <header>
+        Discover More
+    </header>
+
+    <!-- Sticky Navigation Bar -->
+    <nav>
+        <a href="4swifties0897.html">Home</a>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main>
+        <h2>Discovery Section</h2>
+        <p>Select a heading to navigate to the desired section.</p>
+
+        <!-- Button Container with three buttons -->
+        <div class="button-container">
+            <div class="card" onclick="window.location.href='#help'">
+                <i class="fas fa-question-circle"></i>
+                <h3>Help</h3>
+            </div>
+            <div class="card" onclick="window.location.href='#content'">
+                <i class="fas fa-book"></i>
+                <h3>Content</h3>
+            </div>
+            <div class="card" onclick="window.location.href='#about'">
+                <i class="fas fa-info-circle"></i>
+                <h3>About</h3>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 4Swifties. All Rights Reserved. <a href="mailto:4swifties1989@gmail.com">Contact Us</a></p>
+    </footer>
+
+    <!-- External JavaScript for Dynamic Loading -->
+    <script>
+        window.onload = function() {
+            document.getElementById("loading").style.display = "none"; // Hide loading animation when the page is fully loaded
+            document.querySelector("main").style.opacity = "1"; // Make main content fade in
+        }
+    </script>
+
+    <!-- External JavaScript for Dynamic Map and Other Interactivity -->
+    <script>
+        // Initialize Map (Optional)
+        const map = L.map('map').setView([51.505, -0.09], 13); // Example coordinates (London)
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.marker([51.5, -0.09]).addTo(map)
+            .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+            .openPopup();
+    </script>
+
+    <!-- Leaflet JS for Interactive Map (Optional) -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+</body>
+</html>
