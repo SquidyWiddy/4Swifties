@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contents</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- For Icons -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('GettyImages-2152509342.webp');
+            background-size: cover;
+            background-position: center 75%;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-attachment: fixed; /* Parallax effect */
+            animation: fadeIn 1s ease-out; /* Fade-in effect when the page loads */
+        }
+
+        /* Fade-In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Fade-Out Animation */
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        .fade-out {
+            animation: fadeOut 2s forwards; /* Increased the duration of fade-out to 2 seconds */
+        }
+
+        .content-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0); /* Fully transparent header */
+            padding: 10px 20px;
+            width: 100%;
+            position: absolute;
+            top: 5%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            box-shadow: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        h1 {
+            font-size: 45px;
+            background: linear-gradient(45deg, #B93B3B, #F44336);
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* Style for the "Discovery" button with light blue color and transparency */
+        .discovery-button {
+            background-color: rgba(173, 216, 230, 0.6); /* Light blue color with transparency */
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            position: absolute;
+            top: 10px; /* Adjust distance from the top */
+            left: 10px; /* Adjust distance from the left */
+            transition: background-color 0.3s ease;
+            border: 2px solid rgba(173, 216, 230, 0.8); /* Border to match the button */
+        }
+
+        .discovery-button:hover {
+            background-color: rgba(135, 206, 250, 0.8); /* Slightly darker light blue on hover */
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+            gap: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            display: block;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease, transform 0.2s ease;
+            width: 50%;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        /* Hover Effects for Navigation Links */
+        nav a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 0, 0, 0.5); /* Tint effect on hover */
+        }
+
+        /* Underline that appears when hovering over the links */
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background: #B93B3B; /* Line color (red, for example) */
+            left: 0;
+            bottom: 0;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease-out;
+        }
+
+        nav a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        footer {
+            background: black;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: absolute;
+            bottom: -60px;
+            width: 100%;
+            box-shadow: none;
+        }
+
+        /* Parallax Scrolling Effect */
+        body {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center center;
+        }
+
+        /* Make the page responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 35px;
+            }
+            nav a {
+                width: 70%;
+                font-size: 14px;
+            }
+        }
+
+        /* Toast notification styles */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        .toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <header>
+            <!-- Discovery Button Positioned in the Top Left -->
+            <a href="Discovery.html" class="discovery-button">Discovery</a>
+            <h1>Contents</h1>
+        </header>
+        <nav>
+            <a href="Contents.html" aria-label="Contents" onclick="fadeOut()">Contents</a>
+            <a href="Music Videos.html" aria-label="Music Video" onclick="fadeOut()">Music Video</a>
+            <a href="#concerts" aria-label="Concerts" onclick="showToast()">Concerts</a>
+            <a href="#movies" aria-label="Movies" onclick="showToast()">Movies</a>
+            <a href="#tv-shows" aria-label="TV Shows" onclick="showToast()">TV Shows</a>
+            <a href="#documentaries" aria-label="Documentaries" onclick="showToast()">Documentaries</a>
+            <a href="#music" aria-label="Music" onclick="showToast()">Music</a>
+        </nav>
+        <footer>
+            &copy; 2024 Contents. All rights reserved.
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">You clicked a button!</div>
+
+    <script>
+        // Toast Notification Function
+        function showToast() {
+            var toast = document.getElementById('toast');
+            toast.className = "toast show";
+            setTimeout(function() {
+                toast.className = toast.className.replace("show", "");
+            }, 3000);
+        }
+
+        // Fade-out effect when a link is clicked
+        function fadeOut() {
+            document.body.classList.add('fade-out'); // Apply fade-out animation class
+            setTimeout(function() {
+                window.location.href = "Contents.html"; // After fade-out, navigate
+            }, 2000); // Wait for the animation to complete (2s)
+        }
+    </script>
+</body>
+</html>
