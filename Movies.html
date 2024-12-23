@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies | 4Swifties</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset */
+        body, h1, main, footer, a {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* General Body Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('GettyImages-2152509342.webp');
+            background-size: cover;
+            background-position: center 75%;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            padding: 20px 0;
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Fade-In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 25px;
+            text-align: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 30px;
+        }
+
+        .main-header {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(45deg, #FF6F61, #D15B87);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        /* Back Button */
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            border: 2px solid #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+            border-color: #003f7f;
+            transform: translateY(-3px);
+        }
+
+        /* Video Container */
+        .movie-container {
+            max-width: 1000px;
+            width: 100%;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        iframe:hover {
+            transform: scale(1.05); /* Smooth hover effect */
+        }
+
+        .movie-heading {
+            font-size: 1.1rem;
+            color: white;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 15px;
+            border-radius: 5px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-header {
+                font-size: 1.8rem;
+            }
+
+            .movie-container {
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+
+            iframe {
+                height: 250px; /* Adjust iframe height on mobile */
+            }
+
+            .movie-heading {
+                font-size: 1rem; /* Smaller font size for headings on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back Button -->
+    <a href="Contents.html" class="back-button">Back</a>
+
+    <!-- Header -->
+    <header>
+        <div class="main-header">Movies</div>
+    </header>
+
+    <main>
+        <!-- Movie: Hannah Montana: The Movie -->
+        <div class="movie-container">
+            <div class="movie-heading">Hannah Montana: The Movie</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt1114677" title="Hannah Montana: The Movie Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Movie: Valentine's Day -->
+        <div class="movie-container">
+            <div class="movie-heading">Valentine's Day</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt0817230" title="Valentine's Day Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Movie: The Lorax -->
+        <div class="movie-container">
+            <div class="movie-heading">The Lorax</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt1482459" title="The Lorax Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Movie: The Giver -->
+        <div class="movie-container">
+            <div class="movie-heading">The Giver</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt0435651" title="The Giver Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Movie: Cats -->
+        <div class="movie-container">
+            <div class="movie-heading">Cats</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt5697572" title="Cats Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Movie: Amsterdam -->
+        <div class="movie-container">
+            <div class="movie-heading">Amsterdam</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt10304142" title="Amsterdam Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 4Swifties. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('loading').classList.remove('show');
+        };
+    </script>
+</body>
+</html>

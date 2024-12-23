@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentaries | 4Swifties</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"> <!-- For Icons -->
+    <style>
+        /* Basic Reset */
+        body, h1, nav, main, footer, a {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Typography and Body Setup */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('GettyImages-2152509342.webp');
+            background-size: cover;
+            background-position: center 75%;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 1s ease-out;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* Fade-In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 2.5rem; /* Smaller size for the heading */
+            font-weight: 700;
+            position: relative;
+            border-radius: 10px;
+            margin-top: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            animation: slideDown 1s ease-out;
+            z-index: 10;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .main-header {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #FF6F61, #D15B87);
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Back Button */
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            border: 2px solid #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+            border-color: #003f7f;
+            transform: translateY(-3px);
+        }
+
+        /* Video Container */
+        .video-container {
+            max-width: 900px;
+            width: 100%;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            margin-top: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        iframe {
+            width: 100%;
+            height: 350px;
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        iframe:hover {
+            transform: scale(1.05);
+        }
+
+        .video-heading {
+            font-size: 1.5rem; /* Reduced font size for video heading */
+            color: white;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            display: none;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        /* Toast notification styles */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        .toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Coming Soon Bubble */
+        .coming-soon-bubble {
+            position: fixed;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(255, 0, 0, 0.7);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            display: none;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            transition: opacity 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back Button -->
+    <a href="Contents.html" class="back-button">Back</a>
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="loading">
+        <div class="spinner">Loading...</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="main-header">Documentaries</div>
+    </header>
+
+    <main>
+        <!-- Documentary: Bluebird -->
+        <div class="video-container">
+            <div class="video-heading">Bluebird</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt9602666" title="Bluebird Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Documentary: Miss Americana -->
+        <div class="video-container">
+            <div class="video-heading">Miss Americana</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt11388580" title="Miss Americana Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Documentary: Folklore - Long Pond -->
+        <div class="video-container">
+            <div class="video-heading">Folklore - Long Pond</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt13524234" title="Folklore - Long Pond Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Documentary: TS vs Scooter Braun: Bad Blood -->
+        <div class="video-container">
+            <div class="video-heading">TS vs Scooter Braun: Bad Blood</div>
+            <iframe src="https://vidsrc.xyz/embed/tv/tt32310438" title="TS vs Scooter Braun: Bad Blood Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 4Swifties. All rights reserved.</p>
+    </footer>
+
+    <!-- Coming Soon Bubble -->
+    <div class="coming-soon-bubble">More Coming Soon!</div>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('loading').classList.remove('show');
+        };
+
+        // Back to Top Button Visibility and Scroll Function
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                document.querySelector('.back-to-top').style.display = 'block';
+            } else {
+                document.querySelector('.back-to-top').style.display = 'none';
+            }
+
+            // Check if the user has reached the bottom of the page
+            if (document.documentElement.scrollHeight === document.documentElement.scrollTop + window.innerHeight) {
+                document.querySelector('.coming-soon-bubble').style.display = 'block';
+                setTimeout(function() {
+                    document.querySelector('.coming-soon-bubble').style.display = 'none';
+                }, 3000); // Hide after 3 seconds
+            }
+        };
+    </script>
+</body>
+</html>
