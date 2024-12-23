@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concerts | 4Swifties</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset */
+        body, h1, nav, main, footer, a, table, th, td, .card {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Typography and Body Setup */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('GettyImages-2152509342.webp');
+            background-size: cover;
+            background-position: center 75%;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 1s ease-out;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        /* Fade-In Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            position: relative;
+            border-radius: 10px;
+            margin-top: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            animation: slideDown 1s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .main-header {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #FF6F61, #D15B87);
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+
+        /* Back Button */
+        .back-button {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 25px;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            border: 2px solid #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+            z-index: 10;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+            border-color: #003f7f;
+            transform: translateY(-3px);
+        }
+
+        /* Video Container */
+        .video-container {
+            max-width: 900px;
+            width: 100%;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            margin-top: 30px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.2s ease;
+        }
+
+        iframe:hover {
+            transform: scale(1.03);
+        }
+
+        .video-heading {
+            font-size: 2rem;
+            color: white;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        /* Loading Spinner */
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            display: none;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        /* Toast notification styles */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+        }
+
+        .toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-header {
+                font-size: 24px;
+            }
+            iframe {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back Button -->
+    <a href="Contents.html" class="back-button">Back</a>
+
+    <!-- Loading Spinner -->
+    <div id="loading" class="loading">
+        <div class="spinner">Loading...</div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="main-header">Concerts</div>
+    </header>
+
+    <main>
+        <!-- Video Player Section: Fearless -->
+        <div class="video-container">
+            <div class="video-heading">Fearless</div>
+            <iframe src="https://drive.google.com/file/d/1IAX9t__yp_pMmXEF3TrZBvn3RU29kxpL/preview" title="Fearless Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Video Player Section: Speak Now -->
+        <div class="video-container">
+            <div class="video-heading">Speak Now</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt2103256" title="Speak Now Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Video Player Section: Red Tour -->
+        <div class="video-container">
+            <div class="video-heading">Red Tour</div>
+            <iframe src="https://drive.google.com/file/d/1gPBzbdaxCjJCNvn_pNy48GcCM3fJTeG5/preview" title="Red Tour Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Video Player Section: 1989 -->
+        <div class="video-container">
+            <div class="video-heading">1989</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt5297750" title="1989 Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Video Player Section: Reputation -->
+        <div class="video-container">
+            <div class="video-heading">Reputation</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt9426852" title="Reputation Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Video Player Section: Lover -->
+        <div class="video-container">
+            <div class="video-heading">Lover</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt12344464" title="Lover Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <!-- Video Player Section: Eras Tour -->
+        <div class="video-container">
+            <div class="video-heading">Eras Tour</div>
+            <iframe src="https://vidsrc.xyz/embed/movie/tt28814949" title="Eras Tour Video" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 4Swifties. All rights reserved.</p>
+    </footer>
+
+    <script>
+        window.onload = function() {
+            document.getElementById('loading').classList.remove('show');
+        };
+    </script>
+</body>
+</html>
